@@ -1,0 +1,47 @@
+Module Module1
+    Class person
+        Private name As String
+        Private phone As Int64
+
+        Public Overridable Sub read()
+            Console.WriteLine("Enter name and phone")
+            name = console.readline()
+            phone = console.readline()
+        End Sub
+
+        Public Overridable Sub show()
+            Console.WriteLine("Name = {0}", name)
+            Console.WriteLine("Phone No. = {0}", phone)
+        End Sub
+    End Class
+
+    Class student
+        Inherits person
+
+        Private roll As Integer
+        Private course As String
+
+        Public Overrides Sub read()
+            MyBase.read()
+            Console.WriteLine(vbCrLf & "Enter roll no. and course")
+            roll = Console.ReadLine()
+            course = Console.ReadLine()
+        End Sub
+
+        Public Overrides Sub show()
+            MyBase.show()
+            Console.WriteLine("Course = {0}", course)
+            Console.WriteLine("Roll no. = {0}", roll)
+        End Sub
+    End Class
+
+    Sub Main()
+        Dim s1 As student = New student()
+        s1.read()
+        Console.WriteLine(vbCrLf & "Display Student Information : ")
+        Console.WriteLine()
+        s1.show()
+        Console.ReadLine()
+    End Sub
+
+End Module
